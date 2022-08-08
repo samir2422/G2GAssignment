@@ -29,8 +29,8 @@ public class ItemController {
 		public ResponseEntity<Object> getProductDetails(@PathVariable("itemid") String itemid) {
 			Optional<Items> op = service.Detail(itemid);
 			if (op.isPresent()) {
-				Items fod = op.get();
-				return new ResponseEntity<Object>(fod, HttpStatus.OK);
+				Items item = op.get();
+				return new ResponseEntity<Object>(item, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<Object>("Item is not present", HttpStatus.NOT_FOUND);
 			}
@@ -78,7 +78,7 @@ public class ItemController {
 			
 			Items op = service.SearchByName(fod.getName());
 			if (!(op==null)) {
-				return new ResponseEntity<String>("Food Item already present", HttpStatus.ALREADY_REPORTED);
+				return new ResponseEntity<String>(" Item already present", HttpStatus.ALREADY_REPORTED);
 			}
 			service.saveItem(fod);
 			return new ResponseEntity<String>("Successfully added", HttpStatus.CREATED);
