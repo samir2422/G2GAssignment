@@ -196,23 +196,29 @@ public class ItemController {
 			{
 				if(val2.equalsIgnoreCase("asc"))
 					return new ResponseEntity<Object>(service.SortByName(),HttpStatus.OK);
-				else
+				else if(val2.equalsIgnoreCase("dsc"))
 					return new ResponseEntity<Object>(service.SortByNameDSC(),HttpStatus.OK);
+				else
+					return new ResponseEntity<Object>("Please Enter either asc or dsc",HttpStatus.BAD_REQUEST);
 			}
 			
 			else if(val1.equalsIgnoreCase("description"))
 			{
 				if(val2.equalsIgnoreCase("asc"))
 					return  new ResponseEntity<Object>(service.SortByDesc(),HttpStatus.OK);
+				else if(val2.equalsIgnoreCase("dsc"))
+					return new ResponseEntity<Object>(service.SortByDescDSC(),HttpStatus.OK);
 				else
-					return  new ResponseEntity<Object>(service.SortByDescDSC(),HttpStatus.OK);
+					return new ResponseEntity<Object>("Please Enter either asc or dsc",HttpStatus.BAD_REQUEST);
 			}
 			else if(val1.equalsIgnoreCase("price"))
 			{
 				if(val2.equalsIgnoreCase("asc"))
 					return  new ResponseEntity<Object>(service.SortByPriceASC(),HttpStatus.OK);
+				else if(val2.equalsIgnoreCase("dsc"))
+					return new ResponseEntity<Object>(service.SortByPriceDSC(),HttpStatus.OK);
 				else
-					return  new ResponseEntity<Object>(service.SortByPriceDSC(),HttpStatus.OK);
+					return new ResponseEntity<Object>("Please Enter either asc or dsc",HttpStatus.BAD_REQUEST);
 			}
 			return  new ResponseEntity<Object>("Wrong Input",HttpStatus.BAD_REQUEST);
 		}
